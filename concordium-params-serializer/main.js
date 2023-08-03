@@ -2,7 +2,7 @@ const { Buffer } = require("buffer/");
 const bodyParser = require("body-parser");
 const express = require("express");
 const logger = require("morgan");
-const {serializeInitContractParameters, serializeUpdateContractParameters} = require("@concordium/common-sdk");
+const { serializeInitContractParameters, serializeUpdateContractParameters } = require("@concordium/common-sdk");
 
 const hostname = "0.0.0.0";
 const port = 7433;

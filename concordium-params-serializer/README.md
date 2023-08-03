@@ -1,11 +1,13 @@
 # Concordium Smart Contract Parameter Serializer Server
 
-Small node.js server for serializing smart contract parameters for constructing transactions that initialize or update contracts
-using the Concordium crypto library (written in Rust) via JavaScript bindings in `@concordium/common-sdk`.
+Small node.js server for serializing smart contract parameters for transactions that initialize or update contracts.
+It uses the Concordium crypto library (written in Rust) via JavaScript bindings in [`@concordium/common-sdk`](https://www.npmjs.com/package/@concordium/common-sdk).
 The purpose is to aid development of tools that need to perform this operation:
-Depending on the environment, it may be hard to integrate the Rust library into the application.
-It may therefore be useful to delegate the work to this service while getting the other parts working.
-It also provides a way of comparing results for debugging purposes.
+Depending on the environment, it may be hard to integrate the Rust library into the application,
+making it useful to delegate the work to this service while getting the other parts working.
+It also provides a way of comparing results for debugging purposes when swapping the solution out with a native one later.
+
+Note that the server doesn't produce complete transactions; only the parameter that goes into such a transaction.
 
 Using the server as a permanent solution is not recommended.
 
@@ -20,7 +22,7 @@ node main.js
 
 The server has two endpoints:
 
-- `/init`: Serializes the parameter for a transaction of type `initContract` transaction.
+- `/init`: Serializes the parameter for a transaction of type `initContract`.
 - `/update`: Serializes the parameter for a transaction of type `update`.
 
 Both endpoints expect POST requests with the parameter being provided as JSON in the request body.
@@ -33,8 +35,6 @@ They also expect the following arguments to be provided as properly URL encoded 
 - `contract_name`: The name of the contract.
 - `receive_function_name` (`/update` only): The name of the receiver function to invoke on the contract.
 - `schema_version` (optional): The version of the schema. Should be omitted if the version is embedded into the schema.
-
-Note that the endpoints don't produce the complete transaction to be sent; only the parameter part.
 
 ## Example
 
