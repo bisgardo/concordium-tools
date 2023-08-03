@@ -28,6 +28,8 @@ It's required to set the content type header as `Content-Type: application/json`
 
 They also expect the following arguments to be provided as properly URL encoded query parameters:
 
+- `schema` (base64): The schema of the entire module or for the specific function to be invoked.
+  Make sure to properly URL encode this parameter as base64 uses characters that have a special meaning in URLs.
 - `contract_name`: The name of the contract.
 - `receive_function_name` (`/update` only): The name of the receiver function to invoke on the contract.
 - `schema_version` (optional): The version of the schema. Should be omitted if the version is embedded into the schema.
