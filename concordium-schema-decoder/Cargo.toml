@@ -1,0 +1,11 @@
+[package]
+name = "concordium-schema-decoder"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.21"
+concordium-contracts-common = "7.0"
+rocket = "0.5.0-rc"
+serde_json = "1"
